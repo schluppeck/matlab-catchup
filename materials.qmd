@@ -1,0 +1,225 @@
+---
+title: "Matlab revision #1"
+author: "Denis Schluppeck"
+date: "2022-11-21"
+format:
+  revealjs:
+    embed-resources: true
+    chalkboard: false
+    code-line-numbers: false
+self-contained: true
+#  html:
+#    code-fold: true
+jupyter: julia-1.8
+---
+
+## Start Matlab
+
+Everything should work 
+
+- on local machine or
+- on https://matlab.mathworks.com 
+
+## Quick revision of key ideas
+
+- variables, assignment, equal sign ` = `
+- arrays (vectors, matrices, **rows, columns**)
+- indexing: **3 ways** (index, logical, linear)
+- **problem solving!** . Breaking big problems into smaller ones and `function`...
+
+
+## In 2nd session
+
+- ` for ` loop (repeating things)
+- ` true(), false() ` and ` if ` statement (doing things only in certain conditions)
+- text, strings, ...
+- `cell` arrays (using more than numbers)
+- any requests?
+
+## Some terminology
+
+- **Variables**: a *named placeholder* for something
+- Matlab **commands** or **functions** do stuff to *input*s and return an *output*s
+- **operators**: really also just functions, but a convenient shortcut for very common jobs `` + - * / `` etc.
+
+## Doing some maths
+add, subtract, multiply, divide numbers like this:
+
+
+```matlab
+>> 1 + 1 - 1    % + and -
+
+>> 10 .* 5      % use .* and ./ to multiply and divide
+
+>> 2 .^ 0
+
+>> 2 .^ 8       % use .^ to raise to power
+```
+
+## ``.*`` *versus* `*` (`/` versus `./`)
+
+- note that the **operators** for multiply and divide are ``.*`` and ``./`` (more on the extra "dot" later)
+- use **parenthesess** `( )` to make **order** of operations explicit:
+
+```matlab
+>> (10 + 1) .* 9
+>>  10 + 1  .* 9   % not the same, WHY?
+```
+
+## Simple maths
+
+-	3/2
+-	value of pi ($\pi$). What do you think this could be called in Matlab?
+-	two times pi ($\pi$)
+-	2 to the power of 8
+-	4 to the power of 3
+-	64 to the power of one third
+
+- to store the results (and work on them), you can put data in a `variable`
+
+## Variables
+
+```matlab
+>> a = 10   % stores the number 10 in a variable called "a"
+>> b = 2+2  % stores the result of 2+2 in "b"
+```
+
+- you can now use the variables (or place holders)::
+```matlab
+>> a .* 2.3 % uses "a"
+>> c = a + b    % stores result of a+b in "c"
+```
+
+## Vectors and Matrices
+
+- Matlab is very good with dealing with **vectors** and **matrices** 
+- Vectors: **lists of numbers**:
+
+```matlab
+>> x = [1, 2, 3]  % a ROW vector
+>> y = [4; 5; 6]  % a COLUMN vector
+```
+- Matrices: **tables of numbers**::
+
+```matlab
+>> u = [ 1, 2, 3 ;
+         4, 5, 6  ]  % a 2 by 3 matrix
+```
+
+
+## Creating Matrices
+
+- fill a matrix with numbers::
+```matlab
+>> ones(2,5)   % 2-by-5 matrix full of 1
+>> zeros(3,3)  % 3-by-3 matrix full of 0
+>> rand (100)  % a 100-by-100 matrix of uniform random numbers
+```
+
+::: {.fragment}
+
+- many other useful commands::
+```matlab
+>> randn(5)	% gaussian random numbers (5-by-5 matrix)
+>> nan(10)	% not-a-number ... useful in some cases
+```
+
+:::
+
+## Indexing
+
+To illustrate, let's make a **special** example matrix (it's special: all rows and columns add to the same value)
+
+```matlab
+M = magic(5)
+```
+<br>
+
+### Can we check the sums?
+
+::: {.fragment}
+```matlab
+sum(M, 1) % sum ACROSS dimension 1
+
+sum(M, 2) % sum ACROSS dimension 2
+```
+:::
+
+## Indexing by **row**, **column**
+
+Use **parentheses** after variable name. To e.g. get the 2nd row, 4th column:
+
+```matlab
+>> M(2,4)
+
+ans =
+
+    14
+```
+
+Remember: you can use the `:` to get everything along a dimension.
+
+::: {.fragment}
+
+::: {.callout-tip}
+## A useful metaphor
+
+Think of a high-lighter pen colouring in the row and column. Where colours overlap: selected
+:::
+
+:::
+
+## **Logical** indexing 
+
+Find where the array fulfills certain rules. (`true`, `false`)
+
+
+```matlab
+(M > 5) % where are the values > 5
+idx = (M > 5) % store them in idx
+
+M(idx) % use them
+```
+
+::: {.fragment}
+
+::: {.callout-tip}
+## A useful metaphor
+
+Think of a high-lighter pen colouring in the entries that meet the criteria: selected
+:::
+
+:::
+
+
+
+## **Linear** indexing 
+
+Pretend your array is one big long list (go down rows first, then columns, ...).
+
+For `M` (which was 5 by 5), that means 25 entries.
+
+```matlab
+M(23) % one but last entry
+M(:)  % all entries in one big long list
+```
+
+::: {.fragment}
+::: {.callout-tip}
+## A useful metaphor
+
+Think of your array as a snake or maybe an unravelling knitwear sweater
+
+:::
+
+:::
+
+
+## Functions
+
+- what's the idea
+- why are they useful?
+- an example of one
+- `doc('function')` to find out much more
+
+## That's all folks!
