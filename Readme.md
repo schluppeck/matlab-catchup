@@ -13,7 +13,8 @@ Suggested [step-by-step exercises](https://schluppeck.github.io/learningMatlab/a
 ## Materials
 
 - code snippets (see m-files in this folder when they are uploaded)
-  + [exampleScript.m](./exampleScript.m) - the session log
+  + [exampleScript.m](./exampleScript.m) - the script with the loop in it
+  + [sessionLog.m](./sessionLog.m) - the session log
   + [myStats.m](./myStats.m) - the function we wrote together
   
 - the quarto code for the lecture is here: [materials.qmd](./materials.qmd)
