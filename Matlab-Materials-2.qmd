@@ -1,0 +1,193 @@
+---
+title: "Matlab Revision #2"
+author: "Nick Myers"
+date: "2022-11-30"
+format:
+  revealjs:
+    embed-resources: true
+    chalkboard: false
+    code-line-numbers: false
+self-contained: true
+#  html:
+#    code-fold: true
+---
+
+## Start Matlab
+
+Everything should work
+
+-   on local machine or
+-   on https://matlab.mathworks.com
+
+## Last week
+
+-   variables, assignment, equal sign `=`
+-   arrays (vectors, matrices, **rows, columns**)
+-   indexing: **3 ways** (index, logical, linear)
+-   **problem solving!** . Breaking big problems into smaller ones and `function`...
+
+## Today
+
+-   `for` loop (repeating things)
+-   `true(), false()` and `if` statement (doing things only in certain conditions)
+-   text, strings, ...
+-   `cell` arrays (using more than numbers)
+-   any requests?
+
+## Reminder on variables
+
+``` matlab
+>> a = 10   % stores the number 10 in a variable called "a"
+>> b = 2+2  % stores the result of 2+2 in "b"
+```
+
+-   you can now use the variables (or place holders)::
+
+``` matlab
+>> a .* 2.3 % uses "a"
+>> c = a + b    % stores result of a+b in "c"
+```
+
+## Repeating operations
+
+writing repeated operations can become tedious (and error-prone!):
+
+``` matlab
+>> a(1,1) = 0;
+>> a(1,2) = 1;
+>> a(1,3) = a(1,1) + a(1,2);
+>> a(1,4) = a(1,2) + a(1,3);
+>> a(1,5) = a(1,3) + a(1,4);
+>> a(1,6) = a(1,4) + a(1,5);
+>> a(1,7) = a(1,5) + a(1,6);
+>> a(1,8) = a(1,6) + a(1,7);
+```
+
+## For loops
+
+instead:
+
+``` matlab
+>> a(1,1) = 0;
+>> a(1,2) = 1;
+>> nIterations = 6;
+>> for i = 1:nIterations
+>>    a(1,i+2) = a(1,i) + a(1,i+1);
+>> end;
+```
+
+## Last week: Logical indexing
+
+Find where the array fulfills certain rules. (`true`, `false`)
+
+``` matlab
+(M > 5) % where are the values > 5
+idx = (M > 5) % store them in idx
+M(idx) % use them
+```
+
+## More on true/false
+
+Matlab thinks of logical (`true`/`false`) statements in terms of binary numbers
+
+*true = 1*
+
+*false = 0*
+
+``` matlab
+>> a = [5 8 2]; % create a new variable, assign 1x3 vector of numbers to it
+>> a>3 % test each element of a to see if it is larger than 3 
+>> idx = a>3; % create a new variable, idx, and assign the outcome of a>3 to it
+>> a>5
+>> a<8
+```
+
+## Yet more on true/false
+
+what about finding exact matches?
+
+``` matlab
+>> a==5 % returns a 1 (true) for every entry in 'a' exactly equal to 5, 0 (false) otherwise
+>> idx = a==5; % create a new variable, idx, and assign the outcome of a==5 to it
+```
+
+::: fragment
+what about more complicated cases?
+
+``` matlab
+>> a = [5 8 2];
+>> b = 4;
+>> a>b
+>>
+>> b = [4 4 4]; 
+>> a>b %identical to above
+>>
+>> b = [4 9 3];
+>> a>b %compares elements in a to corresponding elements in b
+```
+:::
+
+## if-else statements
+
+execute code only if a particular condition is met
+
+``` matlab
+>> % make a random number between 0, 1
+>> a = rand(1)
+>>
+>> % now test if this time it is > or < than 0.5
+>> if a > 0.5
+>>   disp('chance favours the prepared mind')
+>> else
+>>   disp('uhoh!')
+>> end
+```
+
+## working with text
+So far we have seen numeric data types (and booleans):
+
+``` matlab
+myNum = [2 8 11];
+myBoolean = myNum>2;
+```
+
+Matlab also deals with text:
+``` matlab
+myText = 'Why is Matlab so difficult?';
+```
+
+::: fragment
+some functions apply to numbers and text:
+``` matlab
+numel(myNum)
+numel(myText)
+```
+
+others dont:
+``` matlab
+log10(myNum)
+log10(myText) %produces an error - cant take logarithm of string variables
+```
+:::
+
+## working with lots of text
+text and numbers dont mix easily
+``` matlab
+myNum  = [3 5 9 11.2 -5];
+myText = 'Hello';
+myArray = [myNum; myText] %produces wrong result - cant have numbers and text in same array
+```
+
+::: fragment
+Solution - cell arrays
+``` matlab
+myNum  = [3 5 9 11.2 -5];
+myText = 'Hello';
+
+myCellArray = {};
+myCellArray{1,1} = myNum;
+myCellArray{1,2} = myText;
+```
+:::
+
+## Thanks!
