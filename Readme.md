@@ -28,7 +28,6 @@ Suggested [step-by-step exercises](https://schluppeck.github.io/learningMatlab/a
 
 !-->
 
-
 ## Materials 1 (Denis's session)
 
 code snippets (see m-files in this folder when they are uploaded)
@@ -39,3 +38,10 @@ code snippets (see m-files in this folder when they are uploaded)
 
 - [myStats.m](./myStats.m) - the function we wrote together
   
+
+## Materials 2 (Nick's session)
+
+code snippets (see m-files in this folder when they are uploaded)
+
+- [exampleScriptSession2.m](./exampleScriptSession2.m) 
+- the raw data file for some of the exercises is [RawData.csv](RawData.csv)
